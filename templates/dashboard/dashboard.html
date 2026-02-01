@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block navbar %}
+<div class="navbar">
+    <div><strong>Aaditya Kini – Django Task</strong></div>
+    <div>
+        <a href="/api/logout-ui/">Logout</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="center-page">
+    <div class="card">
+        <h2>Dashboard</h2>
+        <p><strong>User ID:</strong> {{ user.id }}</p>
+        <p><strong>Username:</strong> {{ user.username }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+    </div>
+</div>
+{% endblock %}
