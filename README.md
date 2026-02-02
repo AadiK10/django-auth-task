@@ -1,24 +1,25 @@
 # Django Authentication System (JWT + Google OAuth)
 
-This project implements a secure user authentication system using **Django** and **Django REST Framework**.  
-It supports standard authentication, JWT-based login/logout, Google OAuth 2.0 sign-in, a protected dashboard API, and bulk user insertion.
+This project implements a complete authentication system using **Django** and **Django REST Framework**.  
+It includes JWT-based authentication, Google OAuth 2.0 login, a protected dashboard (API + UI), and bulk user insertion.
 
 ---
 
-## Features
+## 🚀 Features
 
-- User Registration (username/email & password)
-- Login & Logout using JWT (Simple JWT)
-- Google OAuth 2.0 Authentication
+- User Sign Up (username, email & password)
+- Login & Logout using JWT
+- Google OAuth 2.0 Sign-In (via django-allauth)
 - Protected Dashboard API
-- Bulk insertion of 10,000 users using Django ORM
+- Dashboard UI built using Django Templates
+- Bulk insertion of 10,000 users using Django ORM (`bulk_create`)
 - Secure handling of secrets using environment variables
 
 ---
 
-## Tech Stack
+## 🛠 Tech Stack
 
-- Python 3.x
+- Python 3
 - Django
 - Django REST Framework (DRF)
 - django-allauth
@@ -28,107 +29,94 @@ It supports standard authentication, JWT-based login/logout, Google OAuth 2.0 si
 
 ---
 
-## Project Setup (Local)
+## ⚙️ Project Setup (Local)
 
-### 1. Clone the repository
+### 1️⃣ Clone the repository
 ```bash
 git clone <repository-url>
 cd django-auth-task
-```
+2️⃣ Create and activate virtual environment
+Windows
 
-### 2. Create and activate virtual environment
-
-**Windows**
-```bash
 python -m venv venv
 venv\Scripts\activate
-```
+macOS / Linux
 
-**macOS / Linux**
-```bash
 python3 -m venv venv
 source venv/bin/activate
-```
-
-### 3. Install dependencies
-```bash
+3️⃣ Install dependencies
 pip install -r requirements.txt
-```
 
----
-
-## Environment Variables
-
-Create a `.env` file in the project root:
-
-```env
+🔐 Environment Variables
+Create a .env file in the project root:
 DJANGO_SECRET_KEY=your-django-secret-key
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
-```
 
-> The `.env` file is ignored by Git and **must not be committed**.
-
----
-
-## Database Setup
-```bash
+🗄 Database Setup
 python manage.py migrate
 python manage.py createsuperuser
-```
 
----
-
-## Run the Server
-```bash
+▶️ Run the Server
 python manage.py runserver
-```
+Server will start at:
 
-Server runs at:
-```
 http://127.0.0.1:8000/
-```
+🔑 Authentication & API Endpoints
+Authentication (JWT)
+Action	Endpoint
+Sign Up (API)	/api/auth/registration/
+Login (API)	/api/auth/login/
+Logout (API)	/api/auth/logout/
+Token Refresh	/api/auth/token/refresh/
+UI Pages (Django Templates)
+Page	URL
+Sign Up (UI)	/api/ or /api/signup/
+Login (UI)	/api/login/
+Logout (UI)	/api/logout-ui/
+Dashboard (UI)	/api/dashboard-ui/
+Dashboard API (Protected)
+Action	Endpoint
+User Dashboard Data	/api/dashboard/
+⚠️ Requires authentication (JWT or session)
 
----
+🔒 Google OAuth Login
+Google OAuth is implemented using django-allauth.
 
-## API Endpoints
-
-| Action     | Endpoint                   |
-|-----------|----------------------------|
-| Sign Up   | /api/auth/registration/    |
-| Login     | /api/auth/login/           |
-| Logout    | /api/auth/logout/          |
-| Dashboard | /api/dashboard/            |
-
----
-
-## Google OAuth Login
-
-Visit:
-```
+Login URL:
 http://127.0.0.1:8000/accounts/google/login/
-```
 
-Authenticate with Google → user is redirected to dashboard.
+Flow:
+User clicks Continue with Google
+Google consent screen appears
+User approves permissions
+User is logged in
+Redirected to dashboard
 
----
+📊 Bulk User Insertion
+Endpoint:
 
-## Bulk User Insertion
+POST /api/bulk-insert-users/
+Inserts 10,000 users in a single execution
+Uses Django ORM bulk_create
+Includes basic validation to avoid duplicates
+Optimized for performance
 
-- Inserts **10,000 users** in a single execution
-- Uses `bulk_create` for high performance
-- Includes basic duplicate validation
+🔐 Security Notes
+Sensitive credentials are stored using environment variables
+.env file is not committed to GitHub
+JWT-based authentication used for APIs
+Django sessions used for UI authentication
+Google OAuth configured securely via Google Cloud Console
 
----
+✅ Completion Status
+✔ User authentication system
+✔ JWT-based login & logout
+✔ Google OAuth 2.0 integration
+✔ Protected dashboard (API + UI)
+✔ Bulk user insertion
+✔ Secure environment variable handling
+✔ Local setup instructions included
 
-## Security Notes
-
-- Secrets are stored using environment variables
-- `.env` file is excluded from version control
-- JWT and session authentication handled securely
-
----
-
-## Author
-
-**Aaditya Kini**
+👤 Author
+Aaditya Kini
