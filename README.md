@@ -93,12 +93,26 @@ http://127.0.0.1:8000/
 
 ## API Endpoints
 
-| Action     | Endpoint                   |
-|-----------|----------------------------|
-| Sign Up   | /api/auth/registration/    |
-| Login     | /api/auth/login/           |
-| Logout    | /api/auth/logout/          |
-| Dashboard | /api/dashboard/            |
+🔑 Authentication & API Endpoints
+
+🔹 API Endpoints (JWT / JSON)
+
+| Action    | Endpoint                |
+| --------- | ----------------------- |
+| Sign Up   | /api/auth/registration/ |
+| Login     | /api/auth/login/        |
+| Logout    | /api/auth/logout/       |
+| Dashboard | /api/dashboard/         |
+
+
+🔹 UI Pages (Django Templates)
+
+| Page      | URL                |
+| --------- | ------------------ |
+| Sign Up   | / or /api/signup/  |
+| Login     | /api/login/        |
+| Logout    | /api/logout-ui/    |
+| Dashboard | /api/dashboard-ui/ |
 
 ---
 
