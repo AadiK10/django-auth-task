@@ -1,63 +1,134 @@
 # Django Authentication System (JWT + Google OAuth)
 
-This project implements a robust user authentication system using Django and Django REST Framework. It features JWT-based authentication, Google OAuth 2.0 integration, a protected dashboard API, and a utility for bulk user insertion.
+This project implements a secure user authentication system using **Django** and **Django REST Framework**.  
+It supports standard authentication, JWT-based login/logout, Google OAuth 2.0 sign-in, a protected dashboard API, and bulk user insertion.
 
 ---
 
-## 🚀 Features
+## Features
 
-- **User Registration & Login:** Fully integrated JWT (Simple JWT) flow.
-- **Google OAuth 2.0:** Social sign-in capabilities via `django-allauth`.
-- **Protected Dashboard:** Restricted API access ensuring only authorized users can view data.
-- **Bulk Data Handling:** High-performance insertion of 10,000 users using Django ORM.
-- **Environment Security:** Secure management of secrets and keys using `.env` files.
-
----
-
-## 🛠 Tech Stack
-
-- **Framework:** Django & Django REST Framework
-- **Authentication:** django-allauth, dj-rest-auth, Simple JWT
-- **Database:** SQLite (Default for development)
-- **Language:** Python 3.x
+- User Registration (username/email & password)
+- Login & Logout using JWT (Simple JWT)
+- Google OAuth 2.0 Authentication
+- Protected Dashboard API
+- Bulk insertion of 10,000 users using Django ORM
+- Secure handling of secrets using environment variables
 
 ---
 
-## ⚙️ Setup Instructions (Local)
+## Tech Stack
 
-### 1. Project Initialization
+- Python 3.x
+- Django
+- Django REST Framework (DRF)
+- django-allauth
+- dj-rest-auth
+- Simple JWT
+- SQLite (local development)
+
+---
+
+## Project Setup (Local)
+
+### 1. Clone the repository
 ```bash
-# Clone the repository
 git clone <repository-url>
 cd django-auth-task
+```
 
-# Create & activate virtual environment
-# Windows:
+### 2. Create and activate virtual environment
+
+**Windows**
+```bash
 python -m venv venv
 venv\Scripts\activate
+```
 
-# macOS / Linux:
+**macOS / Linux**
+```bash
 python3 -m venv venv
 source venv/bin/activate
+```
 
-# Install dependencies
+### 3. Install dependencies
+```bash
 pip install -r requirements.txt
-2. Environment Variables & SecurityCreate a .env file in the project root. This file is ignored by Git to prevent security leaks.Code snippetDJANGO_SECRET_KEY=your-django-secret-key
+```
+
+---
+
+## Environment Variables
+
+Create a `.env` file in the project root:
+
+```env
+DJANGO_SECRET_KEY=your-django-secret-key
 GOOGLE_CLIENT_ID=your-google-client-id
 GOOGLE_CLIENT_SECRET=your-google-client-secret
-3. Database Setup & RunBash# Apply migrations
+```
+
+> The `.env` file is ignored by Git and **must not be committed**.
+
+---
+
+## Database Setup
+```bash
 python manage.py migrate
-
-# Create a superuser for admin access
 python manage.py createsuperuser
+```
 
-# Start the development server
+---
+
+## Run the Server
+```bash
 python manage.py runserver
-The application will be live at: http://127.0.0.1:8000/
+```
 
-🔑 API EndpointsActionEndpointRegister/api/auth/registration/Login/api/auth/login/Logout/api/auth/logout/Dashboard/api/dashboard/Google Login/accounts/google/login/
+Server runs at:
+```
+http://127.0.0.1:8000/
+```
 
-📊 Bulk User InsertionThis project includes a script to insert 10,000 users efficiently. It utilizes the Django ORM bulk_create method to minimize database hits and includes validation logic to prevent duplicate entries.
+---
 
-👤Author
-Aaditya Kini
+## API Endpoints
+
+| Action     | Endpoint                   |
+|-----------|----------------------------|
+| Sign Up   | /api/auth/registration/    |
+| Login     | /api/auth/login/           |
+| Logout    | /api/auth/logout/          |
+| Dashboard | /api/dashboard/            |
+
+---
+
+## Google OAuth Login
+
+Visit:
+```
+http://127.0.0.1:8000/accounts/google/login/
+```
+
+Authenticate with Google → user is redirected to dashboard.
+
+---
+
+## Bulk User Insertion
+
+- Inserts **10,000 users** in a single execution
+- Uses `bulk_create` for high performance
+- Includes basic duplicate validation
+
+---
+
+## Security Notes
+
+- Secrets are stored using environment variables
+- `.env` file is excluded from version control
+- JWT and session authentication handled securely
+
+---
+
+## Author
+
+**Aaditya Kini**
